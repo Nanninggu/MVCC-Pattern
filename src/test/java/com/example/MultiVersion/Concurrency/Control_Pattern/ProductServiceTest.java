@@ -3,6 +3,7 @@ package com.example.MultiVersion.Concurrency.Control_Pattern;
 import com.example.MultiVersion.Concurrency.Control_Pattern.dto.ProductEntity;
 import com.example.MultiVersion.Concurrency.Control_Pattern.mapper.ProductMapper;
 import com.example.MultiVersion.Concurrency.Control_Pattern.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.OptimisticLockingFailureException;
 
 /**
@@ -16,10 +17,13 @@ import org.springframework.dao.OptimisticLockingFailureException;
  * 이로 인해 예상치 못한 결과가 발생할 수 있습니다.
  * 이 문제를 해결하려면 updateProduct 메소드를 동기화하거나 다른 동시성 제어 메커니즘을 사용해야 합니다.
  * 이렇게 하면 한 번에 하나의 스레드만 제품을 업데이트할 수 있으므로 레이스 컨디션을 방지할 수 있습니다.
+ * 싱글톤 패턴을 사용하여 동시성 문제를 해결할 수 있습니다.
  */
 
 public class ProductServiceTest {
+
     public static void main(String[] args) throws Exception {
+
         ProductService productService = new ProductService(new ProductMapper() {
             @Override
             public ProductEntity selectById(int id) {

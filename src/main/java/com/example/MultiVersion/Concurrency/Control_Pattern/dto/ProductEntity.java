@@ -3,8 +3,8 @@ package com.example.MultiVersion.Concurrency.Control_Pattern.dto;
 public class ProductEntity {
     private int id;
     private String name;
-    private int version;
     private int price;
+    private int version;
 
     public int getId() {
         return id;
@@ -22,19 +22,19 @@ public class ProductEntity {
         this.name = name;
     }
 
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
     public int getPrice() {
         return price;
     }
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }
